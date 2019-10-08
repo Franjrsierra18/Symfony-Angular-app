@@ -20,7 +20,17 @@ class ApiController
 
   public function show(Request $request)
   {
-    return new JsonResponse(['data' => 123]);
+    $productos =
+      [
+        'id' => 1, 'productos' => 'Jamon', 'descripcion' => ''
+        // ['id' => 2, 'productos' => 'Queso', 'descripcion' => ''],
+        // ['id' => 3, 'productos' => 'Carne', 'descripcion' => ''],
+        // ['id' => 4, 'productos' => 'Pollo', 'descripcion' => ''],
+        // ['id' => 5, 'productos' => 'Pavo', 'descripcion' => '']
+      ];
+      $response = new JsonResponse($productos);
+      $response->headers->set('Access-Control-Allow-Origin','*');
+      return $response;
   }
   
   /**
