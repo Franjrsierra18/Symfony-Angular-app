@@ -18,9 +18,9 @@ class ProductController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
 
         $product = new Product();
-        $product->setProductos('Keyboard');
-        $product->setDescripcion('brand new touch keyboard');
-        $product->setCantidad(13);
+        $product->setProductos('Tomates');
+        $product->setDescripcion('Tomates importados de la india');
+        $product->setCantidad(133);
 
         // tell Doctrine you want to (eventually) save the Product (no queries yet)
         $entityManager->persist($product);
