@@ -36,59 +36,101 @@ class ApiController extends AbstractController
     return $response;
   }
 
-  /**
-   * @Route("/api/productos", name="listaProductos", methods={"GET"})
-   */
+  // /**
+  //  * @Route("/api/productos", name="listaProductos", methods={"GET"})
+  //  */
 
-  public function listarProductos(Request $request)
-  {
-    $repository = $this->getDoctrine()->getRepository(Product::class);
-    $productos = $repository->findAll();
-    foreach ($productos as $producto) {
-      $productosArray[] = [
-        "id" => $producto->getId(),
-        "productos" => $producto->getProductos(),
-        "descripcion" => $producto->getDescripcion(),
-        "cantidad" => $producto->getCantidad()
-      ];
-    }
-    $encoders = [new JsonEncoder()];
-    $normalizers = [new ObjectNormalizer()];
+  // public function listarProductos(Request $request)
+  // {
+  //   $repository = $this->getDoctrine()->getRepository(Product::class);
+  //   $productos = $repository->findAll();
+  //   foreach ($productos as $producto) {
+  //     $productosArray[] = [
+  //       "id" => $producto->getId(),
+  //       "productos" => $producto->getProductos(),
+  //       "descripcion" => $producto->getDescripcion(),
+  //       "cantidad" => $producto->getCantidad()
+  //     ];
+  //   }
+  //   $encoders = [new JsonEncoder()];
+  //   $normalizers = [new ObjectNormalizer()];
 
-    $serializer = new Serializer($normalizers, $encoders);
+  //   $serializer = new Serializer($normalizers, $encoders);
 
-    $jsonContent = $serializer->serialize($productos, 'json');
-    $response = new Response($jsonContent);
-    $response->headers->set('Content-Type', 'application/json');
+  //   $jsonContent = $serializer->serialize($productos, 'json');
+  //   $response = new Response($jsonContent);
+  //   $response->headers->set('Content-Type', 'application/json');
 
-    return $response;
-  }
-  
-  /**
-   * @Route("/api/nuevoProducto", name="nuevoProductos", methods={"POST"})
-   */
+  //   return $response;
+  // }
 
-  public function nuevoProductos(): Response
-  {
-    $repository = $this->getDoctrine()->getRepository(Product::class);
-    $productos = $repository->findAll();
-    foreach ($productos as $producto) {
-      $productosArray[] = [
-        "id" => $producto->getId(),
-        "productos" => $producto->getProductos(),
-        "descripcion" => $producto->getDescripcion(),
-        "cantidad" => $producto->getCantidad()
-      ];
-    }
-    $encoders = [new JsonEncoder()];
-    $normalizers = [new ObjectNormalizer()];
+  // /**
+  //  * @Route("/api/new-producto", name="addProduct", methods={"POST"})
+  //  */
 
-    $serializer = new Serializer($normalizers, $encoders);
+  // public function newProductoAction(Request $request)
+  // {
 
-    $jsonContent = $serializer->serialize($productos, 'json');
-    $response = new Response($jsonContent);
-    $response->headers->set('Content-Type', 'application/json');
+    // $product = new Product();
+    // $form=$this->createForm(MovieType::class,$movie);$data=json_decode($request->getContent(),true);$form->submit($data);if($form->isSubmitted()&&$form->isValid()){$em=$this->getDoctrine()->getManager();$em->persist($movie);$em->flush();return$this->handleView($this->view(['status'=>'ok'],Response::HTTP_CREATED));}return$this->handleView($this->view($form->getErrors()));}
 
-    return $response;
-  }
+  //   $restaurante = new Restaurante();
+
+  //   $form = $this->createFormBuilder($restaurante)
+  //     ->add('nombre', TextType::class, array('attr' => array('class' => 'form-control')))
+  //     ->add('localidad', TextType::class, array(
+  //       'required' => false,
+  //       'attr' => array('class' => 'form-control')
+  //     ))
+  //     ->add('save', SubmitType::class, array(
+  //       'label' => 'Create',
+  //       'attr' => array('class' => 'btn btn-primary mt-3')
+  //     ))
+  //     ->getForm();
+
+  //   $form->handleRequest($request);
+  //   if ($form->isSubmitted() && $form->isValid()) {
+  //     $restaurante = $form->getData();
+  //     $entityManager = $this->getDoctrine()->getManager();
+  //     $entityManager->persist($restaurante);
+  //     $entityManager->flush();
+  //     return $this->redirectToRoute('restaurantes');
+  //   }
+
+
+  //   return $this->render('default/new.html.twig', [
+  //     'form' => $form->createView(),
+  //   ]);
+  // }
+
+
+
+
+  // /**
+  //  * @Route("/api/nuevoProducto", name="nuevoProductos", methods={"POST"})
+  //  */
+
+  // public function nuevoProductos(): Response
+  // {
+  //   $repository = $this->getDoctrine()->getRepository(Product::class);
+  //   $productos = $repository->findAll();
+  //   foreach ($productos as $producto) {
+  //     $productosArray[] = [
+  //       "id" => $producto->getId(),
+  //       "productos" => $producto->getProductos(),
+  //       "descripcion" => $producto->getDescripcion(),
+  //       "cantidad" => $producto->getCantidad()
+  //     ];
+  //   }
+  //   $encoders = [new JsonEncoder()];
+  //   $normalizers = [new ObjectNormalizer()];
+
+  //   $serializer = new Serializer($normalizers, $encoders);
+
+  //   $jsonContent = $serializer->serialize($productos, 'json');
+  //   $response = new Response($jsonContent);
+  //   $response->headers->set('Content-Type', 'application/json');
+
+  //   return $response;
+  // }
 }
